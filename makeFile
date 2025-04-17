@@ -1,0 +1,16 @@
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+# Detect OS
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    CFLAGS += -lrt
+endif
+
+all: ch_3forkAndPipe.o
+
+ch_3forkAndPipe.o: ch_3forkAndPipe.cpp
+	$(CC) $(CFLAGS) $^ -o $@
+
+clean:
+	rm -f *.o
