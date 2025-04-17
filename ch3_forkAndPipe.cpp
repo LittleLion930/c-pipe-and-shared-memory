@@ -13,7 +13,8 @@ int main(void)
   // char write_msg[BUFFER_SIZE] = "Greetings";
   char parent_msg[BUFFER_SIZE] = "Greetings";
   // char read_msg[BUFFER_SIZE];
-  char read_buf[BUFFER_SIZE] = "Hello back!";
+  char child_msg[BUFFER_SIZE] = "Hello back!";
+  char read_buf[BUFFER_SIZE];
 
   // int fd[2];
 
@@ -68,6 +69,9 @@ int main(void)
  
      /* close the read end of the pipe */
      close(parent_to_child[READ_END]);
+
+     printf("CHILD: Sending message: %s\n", child_msg);
+
 
    }
    return 0;
