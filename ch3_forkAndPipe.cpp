@@ -41,7 +41,7 @@ int main(void)
      close(child_to_parent[WRITE_END]);
      // printf("PARENT: Writing message\n");
 
-     printf("PARENT:Sending message: %s\n");
+     printf("PARENT: Sending message: %s\n", parent_msg);
      // write(fd[WRITE_END], write_msg, strlen(write_msg)+1);
      write(parent_to_child[WRITE_END], parent_msg, strlen(parent_msg)+1);
      // printf("PARENT: Wrote message, exiting\n");
@@ -71,8 +71,8 @@ int main(void)
      close(parent_to_child[READ_END]);
 
      printf("CHILD: Sending message: %s\n", child_msg);
-
-
+     write(child_to_parent[WRITE_END], child_msg, strlen(child_msg)+1);
+     close(child_to_parent[WRITE_END]);
    }
    return 0;
 }
